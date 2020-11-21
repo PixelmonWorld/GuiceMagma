@@ -7,6 +7,10 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.Module;
+import com.google.inject.Stage;
 import com.mojang.authlib.GameProfile;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufOutputStream;
@@ -144,6 +148,7 @@ public final class CraftServer implements Server {
     private final WorldMetadataStore worldMetadata = new WorldMetadataStore();
     private final BooleanWrapper online = new BooleanWrapper();
     private final List<CraftPlayer> playerView;
+    private Injector injector;
     private final Spigot spigot = new Spigot() {
 
         @Deprecated
@@ -320,6 +325,7 @@ public final class CraftServer implements Server {
 
         if (pluginFolder.exists()) {
             Plugin[] plugins = pluginManager.loadPlugins(pluginFolder);
+            this.injector = Guice.createInjector(Stage.PRODUCTION, new Module[]{new ServerModule(), new CraftModule(this, this.getPluginManager(), this.getScheduler(), this.getServicesManager(), plugins)});
             for (Plugin plugin : plugins) {
                 try {
                     String message = String.format("Loading %s", plugin.getDescription().getFullName());
@@ -464,6 +470,11 @@ public final class CraftServer implements Server {
         }
         }
         return found;
+    }
+
+    @Override
+    public Injector getInjector() {
+        return null;
     }
 
     @Override

@@ -65,7 +65,7 @@ public class DownloadServerFiles {
      */
     public static void downloadServerLibraries() {
         String fileName = "libraries.zip";
-        String downloadLink = "https://raw.githubusercontent.com/MagmaFoundation/Magma/master/release/libraries.zip";
+        String downloadLink = "https://raw.githubusercontent.com/PixelmonWorld/GuiceMagma/master/release/libraries.zip";
 
         File minecraftlibraries = new File(fileName);
         if (!minecraftlibraries.exists() && !minecraftlibraries.isDirectory()

@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import com.google.inject.Injector;
 import org.bukkit.Warning.WarningState;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
@@ -308,6 +310,8 @@ public interface Server extends PluginMessageRecipient {
      * @return a player if one was found, null otherwise
      */
     public Player getPlayer(String name);
+
+    Injector getInjector();
 
     /**
      * Gets the player with the exact given name, case insensitive.

@@ -170,6 +170,18 @@
         "clientreq": true
       },
       {
+        "name": "com.google.inject:guice:4.2.2",
+        "url": "http://repo.maven.apache.org/maven2",
+        "serverreq": true,
+        "clientreq": true
+      },
+      {
+        "name" : "aopalliance:aopalliance:1.0",
+        "url": "http://repo.maven.apache.org/maven2",
+        "serverreq": true,
+        "clientreq": true
+      },
+      {
         "name": "org.yaml:snakeyaml:1.23",
         "url": "http://repo.maven.apache.org/maven2",
         "serverreq": true,

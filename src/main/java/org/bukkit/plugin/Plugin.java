@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
+import world.pixelmon.inject.ProtectedBinder;
 import org.bukkit.Server;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -166,4 +167,7 @@ public interface Plugin extends TabExecutor {
      * @return name of the plugin
      */
     public String getName();
+
+    default void configure(ProtectedBinder binder) {}
+
 }
